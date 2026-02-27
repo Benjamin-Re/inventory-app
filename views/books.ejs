@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Books</title><link rel="stylesheet" type="text/css" href="/styles.css"></link>
+</head>
+<body>
+    <%- include('navbar') %>
+    <nav class="secondary-nav">
+        <a href="/book/new">Add a Book</a>
+        <a href="/book/delete">Delete All Books</a>
+    </nav>
+    <div class="container">
+    <% books.forEach(book => { %>
+        <ul>
+            <li><span>id:</span><%= book.id %></li>
+            <li><span>title:</span> <%= book.title %>,</li>
+            <li><span>price:</span> <%= book.price %>,</li>
+            <li><span>author:</span> <%= book.firstname %>, <%= book.lastname %></li>
+            <li><span>category:</span> <%= book.name %>,</li>
+            <li><span>stock:</span> <%= book.stock %></li>
+            <li><span>year:</span> <%= book.year %></li>
+            <li><a href="/book/<%= book.id %>/update">Update</a></li>
+            <li><a href="/book/<%= book.id %>/delete">Delete</a></li>
+        </ul>
+        <% }) %>
+    </div>
+</body>
+</html>

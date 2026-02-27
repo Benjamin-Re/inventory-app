@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title><link rel="stylesheet" type="text/css" href="/styles.css"></link>
+</head>
+<body>
+    <%- include('navbar') %>
+    <div class="container">
+    <% if(locals.errors) { %>
+        <div>
+        <% errors.forEach(error => { %>
+            <p><%= error.msg %></p>
+        <% }) %>
+        </div>
+    <% } %>    
+    <form action="/book/new" method="post">
+        <label for="title">title</label>
+        <input type="text" name="title" value="<%= locals.values?.title ?? '' %>">
+
+        <label for="price">price</label>
+        <input type="float" name="price" value="<%= locals.values?.price ?? '' %>">
+
+        <label for="author">author (id)</label>
+        <input type="number" name="author" value="<%= locals.values?.author ?? '' %>">
+
+        <label for="category">category (id)</label>
+        <input type="number" name="category" value="<%= locals.values?.category ?? '' %>">
+
+        <label for="stock">stock amount</label>
+        <input type="number" name="stock" value="<%= locals.values?.stock ?? '' %>">
+
+        <label for="year">year</label>
+        <input type="number" name="year" value="<%= locals.values?.year ?? '' %>">
+
+        <button type="submit">Submit</button>
+    </form>
+    </div>
+</body>
+</html>

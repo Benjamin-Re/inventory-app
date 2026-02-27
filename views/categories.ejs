@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Categories</title><link rel="stylesheet" type="text/css" href="/styles.css"></link>
+</head>
+<body>
+    <%- include('navbar') %>
+    <nav class="secondary-nav">
+        <a href="/category/new">Add a Category</a>
+        <a href="/category/delete">Delete All Categories</a>
+    </nav>
+    <div class="container">
+    <% categories.forEach(category => { %>
+        <ul>
+            <li><span>id: </span><%= category.id %></li>
+            <li><span>name:</span> <%= category.name %></li>
+            <li><a href="/category/<%= category.id %>/update">Update</a></li>
+            <li><a href="/category/<%= category.id %>/delete">Delete</a></li>
+        </ul>
+    <% }) %>
+    </div>
+</body>
+</html>

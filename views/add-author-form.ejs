@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title><link rel="stylesheet" type="text/css" href="/styles.css"></link>
+</head>
+<body>
+    <%- include('navbar') %>
+    <div class="container">
+        <% if(locals.errors) { %>
+            <div>
+                <% errors.forEach(error => { %>
+                    <p><%= error.msg %></p>
+                <% }) %>
+            </div>
+        <% } %>    
+        <form action="/author/new" method="post">
+            <label for="firstname">first name</label>
+            <input type="text" name="firstname" value="<%= locals.values?.firstname ?? '' %>">
+            <label for="lastname">last name</label>
+            <input type="text" name="lastname" value="<%= locals.values?.lastname ?? '' %>">
+            <button type="submit">Submit</button>
+        </form>
+    </div>
+</body>
+</html>

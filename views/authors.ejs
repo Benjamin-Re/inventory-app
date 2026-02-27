@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Authors</title><link rel="stylesheet" type="text/css" href="/styles.css"></link>
+</head>
+<body>
+    <%- include('navbar') %>
+    <nav class="secondary-nav">
+        <a href="/author/new">Add an Author</a>
+        <a href="/author/delete">Delete All Authors</a>
+    </nav>
+    <div class="container">
+    <% authors.forEach(author => { %>
+        <ul>
+            <li><span>id:</span> <%= author.id %></li>
+            <li><span>firstname:</span> <%= author.firstname %></li>
+            <li><span>lastname:</span> <%= author.lastname %></li>
+            <li><a href="/author/<%= author.id %>/update">Update</a></li>
+            <li><a href="/author/<%= author.id %>/delete">Delete</a></li>
+        </ul>
+    <% }) %>
+    </div>
+</body>
+</html>

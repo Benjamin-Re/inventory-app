@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Update Author</title><link rel="stylesheet" type="text/css" href="/styles.css"></link>
+</head>
+<body>
+    <%- include('navbar') %>
+    <div class="container">
+        <% if(locals.errors) { %>
+                <div>
+                    <% errors.forEach(error => { %>
+                        <p><%= error.msg %></p>
+                    <% }) %>
+                </div>
+        <% } %>  
+        <form action="/author/<%= author.id %>/update" method="post">
+            <label for="firstname">firstname</label>
+            <input type="text" name="firstname" value="<%= author.firstname %>">
+            <label for="lastname">lastname</label>
+            <input type="text" name="lastname" value="<%= author.lastname %>">
+            <button type="submit">Submit</button>
+        </form>
+    </div>
+</body>
+</html>
