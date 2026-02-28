@@ -28,4 +28,4 @@ category
 - local db [x], remote db [x]
 - css [x]
 - form validation [x]
-- deploy []
+- deploy [x] 
