@@ -22,6 +22,8 @@
   max-width: 80%;                                                                  
   margin: 0 auto; 
   justify-content: center;
+  gap: 10px;
+  padding: 1em;
 }
 
 ul {
@@ -29,12 +31,34 @@ ul {
     padding: 0;
     background-color: #fff;
     border: 1px solid #ddd;
-    padding: 1rem;   
-    margin-bottom: 1rem;  
+    padding: 2rem;     
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-    width: 30%;
-    height: 300px;
+    width: 35%;
+    height: 350px;
     overflow-y: auto;
+    border-radius: 10px;
+}
+
+main {
+  display: flex;
+  width: 100%;
+}
+
+input[type="radio"] {
+  width: auto;
+}
+
+#sort-form {
+  width: 100%;
+}
+.secondary-container {
+  width: 200px;
+  flex-shrink: 0;
+  padding: 1rem;
+}
+
+ul:hover {
+  border: 1px solid black;
 }
 
 span {

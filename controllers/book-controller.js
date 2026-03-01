@@ -18,8 +18,10 @@ const validateData = [
 ]
 
 async function getAllBooks(req, res) {
-    const books = await db.getAllBooks()
-    res.render("books", { books } )
+    const sort = req.query.sort
+    console.log(`sort by ${sort}`)
+    const books = await db.getAllBooks(sort)
+    res.render("books", { books, sort } )
 }
 
 async function getBookById(req, res) {

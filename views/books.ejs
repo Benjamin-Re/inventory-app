@@ -11,20 +11,34 @@
         <a href="/book/new">Add a Book</a>
         <a href="/book/delete">Delete All Books</a>
     </nav>
-    <div class="container">
-    <% books.forEach(book => { %>
-        <ul>
-            <li><span>id:</span><%= book.id %></li>
-            <li><span>title:</span> <%= book.title %>,</li>
-            <li><span>price:</span> <%= book.price %>,</li>
-            <li><span>author:</span> <%= book.firstname %>, <%= book.lastname %></li>
-            <li><span>category:</span> <%= book.name %>,</li>
-            <li><span>stock:</span> <%= book.stock %></li>
-            <li><span>year:</span> <%= book.year %></li>
-            <li><a href="/book/<%= book.id %>/update">Update</a></li>
-            <li><a href="/book/<%= book.id %>/delete">Delete</a></li>
-        </ul>
-        <% }) %>
-    </div>
+    <main>
+        <div class="secondary-container">
+            <form id="sort-form" method="GET" action="/book">
+                <p>Sort by:</p>
+                <label><input type="radio" name="sort" value="price" <%= locals.sort === 'price' ? 'checked' : '' %>> price</label>
+                <label><input type="radio" name="sort" value="title" <%= locals.sort === 'title' ? 'checked' : '' %>> title</label>
+            </form>
+        </div>
+        <div class="container">
+        <% books.forEach(book => { %>
+            <ul>
+                <li><span>id:</span><%= book.id %></li>
+                <li><span>title:</span> <%= book.title %>,</li>
+                <li><span>price:</span> <%= book.price %>,</li>
+                <li><span>author:</span> <%= book.firstname %>, <%= book.lastname %></li>
+                <li><span>category:</span> <%= book.name %>,</li>
+                <li><span>stock:</span> <%= book.stock %></li>
+                <li><span>year:</span> <%= book.year %></li>
+                <li><a href="/book/<%= book.id %>/update">Update</a></li>
+                <li><a href="/book/<%= book.id %>/delete">Delete</a></li>
+            </ul>
+            <% }) %>
+        </div>
+    </main>
+    <script>
+        document.querySelectorAll('input[name="sort"]').forEach(radio => {
+            radio.addEventListener('change', () => document.getElementById('sort-form').submit());
+        });
+    </script>
 </body>
 </html>

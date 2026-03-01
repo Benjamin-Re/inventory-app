@@ -64,11 +64,14 @@ async function deleteAllCategories() {
 }
 
 // Book
-async function getAllBooks() {
-    const { rows } = await pool.query(" \
+async function getAllBooks(sort) {
+    const validSortColumns = ['title', 'price']
+    const orderBy = validSortColumns.includes(sort) ? sort : 'id';
+    const { rows } = await pool.query(`
         SELECT book.id, title, price, firstname, lastname, name, stock, year FROM book \
         LEFT JOIN author on book.author = author.id \
-        LEFT JOIN category on book.category = category.id;")
+        LEFT JOIN category on book.category = category.id \
+        ORDER BY ${orderBy} ASC;`)
     return rows
 }
 

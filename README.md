@@ -29,3 +29,7 @@ category
 - css [x]
 - form validation [x]
 - deploy [x] 
+- add sort by price, title [x]
+- add filter by category, author []
+- add search []
+- add mobile layout []
