@@ -33,7 +33,7 @@ ul {
     border: 1px solid #ddd;
     padding: 2rem;     
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-    width: 35%;
+    width: 300px;
     height: 350px;
     overflow-y: auto;
     border-radius: 10px;
@@ -153,4 +153,16 @@ input {
   width: 100%;
   padding: 7px;
   font-size: 14px;
+}
+
+@media (max-width: 375px) {
+  .main-nav {
+    font-size: 0.6em;
+  }
+  main {
+    flex-direction: column;
+  }
+  .secondary-container, form {
+    width: 100%;
+  }
 }
