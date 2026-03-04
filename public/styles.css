@@ -51,10 +51,21 @@ input[type="radio"] {
 #sort-form {
   width: 100%;
 }
+
 .secondary-container {
-  width: 200px;
+  width: 400px;
   flex-shrink: 0;
   padding: 1rem;
+}
+
+p {
+  font-weight: bold;
+}
+
+.secondary-container form {
+  display: flex;
+  flex-wrap: wrap;
+  gap: .5em;
 }
 
 ul:hover {

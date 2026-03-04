@@ -13,10 +13,26 @@
     </nav>
     <main>
         <div class="secondary-container">
-            <form id="sort-form" method="GET" action="/book">
-                <p>Sort by:</p>
-                <label><input type="radio" name="sort" value="price" <%= locals.sort === 'price' ? 'checked' : '' %>> price</label>
-                <label><input type="radio" name="sort" value="title" <%= locals.sort === 'title' ? 'checked' : '' %>> title</label>
+            <form id="sort-filter-form" method="GET" action="/book">
+                
+                <div>
+                    <p>Sort by:</p>
+                    <label><input type="radio" name="sort" value="price" <%= locals.sort === 'price' ? 'checked' : '' %>> price</label>
+                    <label><input type="radio" name="sort" value="title" <%= locals.sort === 'title' ? 'checked' : '' %>> title</label>
+                </div>
+                <div>
+                    <p>Filter by:</p>
+                    <b>Category</b><br>
+                    <% categories.forEach(category => { %>
+                        <label><%= category.name %></label><input type="checkbox" name="filter" value="<%= category.id %>" 
+                        <%= locals.filter && locals.filter.includes(String(category.id)) ? 'checked' : '' %> />
+                    <% }) %>
+                    <b>Author</b><br>
+                    <% authors.forEach(author => { %>
+                        <label><%= author.firstname %><%= author.lastname %></label><input type="checkbox" name="filterAuthor" value="<%= author.id %>" 
+                        <%= locals.filterAuthor && locals.filterAuthor.includes(String(author.id)) ? 'checked' : '' %> />
+                    <% }) %>
+                </div>
             </form>
         </div>
         <div class="container">
@@ -37,7 +53,13 @@
     </main>
     <script>
         document.querySelectorAll('input[name="sort"]').forEach(radio => {
-            radio.addEventListener('change', () => document.getElementById('sort-form').submit());
+            radio.addEventListener('change', () => document.getElementById('sort-filter-form').submit());
+        });
+        document.querySelectorAll('input[name="filter"]').forEach(checkbox => {
+            checkbox.addEventListener('change', () => document.getElementById('sort-filter-form').submit());
+        });
+        document.querySelectorAll('input[name="filterAuthor"]').forEach(checkbox => {
+            checkbox.addEventListener('change', () => document.getElementById('sort-filter-form').submit());
         });
     </script>
 </body>

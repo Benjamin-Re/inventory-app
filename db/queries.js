@@ -64,14 +64,35 @@ async function deleteAllCategories() {
 }
 
 // Book
-async function getAllBooks(sort) {
+async function getAllBooks(sort, filter, filterAuthor) {
     const validSortColumns = ['title', 'price']
     const orderBy = validSortColumns.includes(sort) ? sort : 'id';
+
+    const conditions = []
+    const params = []
+    
+    const hasFilter = filter && filter.length > 0;
+    
+    if(hasFilter) {
+        params.push(filter.map(Number))
+        conditions.push(`category.id = ANY($${params.length})`)
+    }
+    
+    const hasFilterAuthor = filterAuthor && filterAuthor.length > 0;
+    
+    if(hasFilterAuthor) {
+        params.push(filterAuthor.map(Number))
+        conditions.push(`author.id = ANY($${params.length})`)
+    }
+
+    const whereClause = conditions.length > 0 ? `WHERE ${conditions.join(' AND ')}` : ''
+
     const { rows } = await pool.query(`
         SELECT book.id, title, price, firstname, lastname, name, stock, year FROM book \
         LEFT JOIN author on book.author = author.id \
         LEFT JOIN category on book.category = category.id \
-        ORDER BY ${orderBy} ASC;`)
+        ${whereClause}
+        ORDER BY ${orderBy} ASC;`, params)
     return rows
 }
 

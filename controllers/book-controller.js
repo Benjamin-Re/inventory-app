@@ -19,9 +19,12 @@ const validateData = [
 
 async function getAllBooks(req, res) {
     const sort = req.query.sort
-    console.log(`sort by ${sort}`)
-    const books = await db.getAllBooks(sort)
-    res.render("books", { books, sort } )
+    const filter = req.query.filter === undefined ? [] : Array.isArray(req.query.filter) ? req.query.filter : [req.query.filter]
+    const filterAuthor = req.query.filterAuthor === undefined ? [] : Array.isArray(req.query.filterAuthor) ? req.query.filterAuthor : [req.query.filterAuthor]
+    const books = await db.getAllBooks(sort, filter, filterAuthor)
+    const categories = await db.getAllCategories()
+    const authors = await db.getAllAuthors()
+    res.render("books", { books, sort, categories, filter, authors, filterAuthor } )
 }
 
 async function getBookById(req, res) {
