@@ -14,11 +14,11 @@
     <main>
         <div class="secondary-container">
             <form id="sort-filter-form" method="GET" action="/book">
-                
                 <div>
                     <p>Sort by:</p>
                     <label><input type="radio" name="sort" value="price" <%= locals.sort === 'price' ? 'checked' : '' %>> price</label>
                     <label><input type="radio" name="sort" value="title" <%= locals.sort === 'title' ? 'checked' : '' %>> title</label>
+                    <label><input type="radio" name="sort" value="year" <%= locals.sort === 'year' ? 'checked' : '' %>> year</label>
                 </div>
                 <div>
                     <p>Filter by:</p>

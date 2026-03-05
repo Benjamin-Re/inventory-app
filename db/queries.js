@@ -65,7 +65,7 @@ async function deleteAllCategories() {
 
 // Book
 async function getAllBooks(sort, filter, filterAuthor, search) {
-    const validSortColumns = ['title', 'price']
+    const validSortColumns = ['title', 'price', 'year']
     const orderBy = validSortColumns.includes(sort) ? sort : 'id';
 
     const conditions = []
