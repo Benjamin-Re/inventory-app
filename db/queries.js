@@ -64,7 +64,7 @@ async function deleteAllCategories() {
 }
 
 // Book
-async function getAllBooks(sort, filter, filterAuthor) {
+async function getAllBooks(sort, filter, filterAuthor, search) {
     const validSortColumns = ['title', 'price']
     const orderBy = validSortColumns.includes(sort) ? sort : 'id';
 
@@ -83,6 +83,13 @@ async function getAllBooks(sort, filter, filterAuthor) {
     if(hasFilterAuthor) {
         params.push(filterAuthor.map(Number))
         conditions.push(`author.id = ANY($${params.length})`)
+    }
+
+    const hasSearch = search ? search.length > 0 : false
+
+    if(hasSearch) {
+        params.push(search)
+        conditions.push(`book.title ILIKE $${params.length} OR author.firstname ILIKE $${params.length} OR author.lastname ILIKE $${params.length}`)
     }
 
     const whereClause = conditions.length > 0 ? `WHERE ${conditions.join(' AND ')}` : ''

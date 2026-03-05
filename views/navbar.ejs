@@ -3,4 +3,7 @@
     <a href="/book">All Books</a>
     <a href="/category">All Categories</a>
     <a href="/author">All Authors</a>
+    <form id="search-form" method="GET" action="/book">
+        <input type="text" name="search" value="<%= locals.search %>">
+    </form>
 </nav>

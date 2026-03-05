@@ -21,10 +21,12 @@ async function getAllBooks(req, res) {
     const sort = req.query.sort
     const filter = req.query.filter === undefined ? [] : Array.isArray(req.query.filter) ? req.query.filter : [req.query.filter]
     const filterAuthor = req.query.filterAuthor === undefined ? [] : Array.isArray(req.query.filterAuthor) ? req.query.filterAuthor : [req.query.filterAuthor]
-    const books = await db.getAllBooks(sort, filter, filterAuthor)
+    const search = req.query.search
+    console.log(search)
+    const books = await db.getAllBooks(sort, filter, filterAuthor, search)
     const categories = await db.getAllCategories()
     const authors = await db.getAllAuthors()
-    res.render("books", { books, sort, categories, filter, authors, filterAuthor } )
+    res.render("books", { books, sort, categories, filter, authors, filterAuthor, search } )
 }
 
 async function getBookById(req, res) {
