@@ -10,7 +10,7 @@ authorRouter.get("/new", showAddAuthorForm)
 
 authorRouter.post("/new", validateData, addNewAuthor)
 
-authorRouter.get("/deleteAll", deleteAllAuthors)
+// authorRouter.get("/deleteAll", deleteAllAuthors)
 
 authorRouter.get("/:id", getAuthorById)
 

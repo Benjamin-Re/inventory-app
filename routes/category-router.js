@@ -10,7 +10,7 @@ categoryRouter.get("/new", showAddCategoryForm)
 
 categoryRouter.post("/new", validateData, addNewCategory)
 
-categoryRouter.get("/deleteAll", deleteAllCategories)
+// categoryRouter.get("/deleteAll", deleteAllCategories)
 
 categoryRouter.get("/:id", getCategoryById)
 

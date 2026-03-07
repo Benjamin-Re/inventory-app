@@ -100,6 +100,7 @@ async function getAllBooks(sort, filter, filterAuthor, search) {
         LEFT JOIN category on book.category = category.id \
         ${whereClause}
         ORDER BY ${orderBy} ASC;`, params)
+    console.log(`rows: ${rows}`)
     return rows
 }
 

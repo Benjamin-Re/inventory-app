@@ -8,7 +8,7 @@ bookRouter.get("/new", showAddBookForm)
 
 bookRouter.post("/new", validateData, addBook)
 
-bookRouter.get("/deleteAll", deleteAllBooks)
+// bookRouter.get("/deleteAll", deleteAllBooks)
 
 bookRouter.get("/:id", getBookById)
 

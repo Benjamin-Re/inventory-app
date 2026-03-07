@@ -164,13 +164,16 @@ input {
   font-size: 14px;
 }
 
-@media (max-width: 375px) {
+@media (max-width: 400px) {
   .main-nav {
     font-size: 0.6em;
+    flex-direction: column;
+    height: 300px;
   }
   main {
     flex-direction: column;
   }
+
   .secondary-container, form {
     width: 100%;
   }
